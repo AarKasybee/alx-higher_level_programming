@@ -1,20 +1,16 @@
 #!/usr/bin/python3
-#Write a Python script that fetches https://alx-intranet.hbtn.io/status
-#using urlib
+"""A script that
+- fetches https://alx-intranet.hbtn.io/status.
+- uses urlib package
+"""
 
-You must use the package urllib
-import urllib.request
+if __name__ == '__main__':
+    import urllib.request
 
-url = "https://alx-intranet.hbtn.io/status"
-
-try:
-    with urllib.request.urlopen(url) as response:
-        data = response.read()
+    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as res:
+        content = res.read()
         print("Body response:")
-        print("\t- type:", type(data))
-        print("\t- content:", data.decode('utf-8'))
-except urllib.error.HTTPError as e:
-    print("Error code:", e.code)
-except urllib.error.URLError as e:
-    print("URL Error:", e.reason)
+        print("\t- type: {}".format(type(content)))
+        print("\t- content: {}".format(content))
+        print("\t- utf8 content: {}".format(content.decode('utf-8')))
 
